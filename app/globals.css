@@ -1,26 +1,47 @@
 @import "tailwindcss";
 
+@theme {
+  --color-rf-red: #e30613;
+  --color-rf-dark: #1a1a1a;
+  --color-rf-gray: #6b6b6b;
+  --color-rf-darkgray: #2a2a2a;
+
+  --font-title: var(--font-rajdhani), "Montserrat", sans-serif;
+  --font-body: var(--font-montserrat), "Arial", sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --rf-red: #e30613;
+  --rf-white: #ffffff;
+  --rf-black: #000000;
+  --rf-dark: #1a1a1a;
+  --rf-gray: #6b6b6b;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: var(--font-montserrat, "Montserrat"), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
