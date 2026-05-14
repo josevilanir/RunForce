@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# AI / Task management
+claude.md
+CLAUDE.md
+AGENTS.md
+implementation_plan.md
+.claude/
+tasks/
