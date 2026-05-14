@@ -7,37 +7,37 @@ import Button from "@/components/ui/Button";
 
 const plans = [
   {
-    name: "Base",
-    tagline: "Para quem está começando",
+    name: "Start",
+    price: "89,00",
+    tagline: "Acompanhamento essencial",
     features: [
-      "Planilha de treinos semanal",
-      "Acompanhamento via app",
-      "Suporte por WhatsApp",
-      "Revisão mensal de desempenho",
+      "Planilha semanal",
+      "Acompanhamento Básico",
+      "Suporte simples por (WhatsApp)",
     ],
     highlight: false,
   },
   {
     name: "Performance",
-    tagline: "Para quem quer evoluir rápido",
+    price: "149,00",
+    tagline: "Evolução e suporte direto",
     features: [
-      "Tudo do plano Base",
-      "Periodização avançada",
-      "Análise de corrida",
-      "Preparação para provas",
-      "Acesso a treinos em grupo",
+      "Planilha personalizada",
+      "Ajustes semanais",
+      "Suporte direto",
+      "Participação nos treinos",
     ],
     highlight: true,
   },
   {
-    name: "Elite",
-    tagline: "Para quem compete",
+    name: "Premium",
+    price: "249,00",
+    tagline: "Alta performance e atenção",
     features: [
-      "Tudo do plano Performance",
-      "Coach dedicado",
-      "Análise biomecânica",
-      "Suporte em race day",
-      "Relatório de evolução detalhado",
+      "Acompanhamento direto",
+      "Feedback constante",
+      "Estratégia de prova",
+      "Atenção mais próxima",
     ],
     highlight: false,
   },
@@ -54,7 +54,7 @@ export default function Plans() {
           transition={{ duration: 0.6 }}
           className="mb-14"
         >
-          <SectionTitle subtitle="Escolha o plano que se encaixa no seu momento. Textos e valores finais em breve.">
+          <SectionTitle subtitle="Escolha o plano que se encaixa no seu momento e objetivo de performance.">
             Planos &{" "}
             <span className="text-rf-red">Metodologia</span>
           </SectionTitle>
@@ -70,7 +70,7 @@ export default function Plans() {
               transition={{ duration: 0.55, delay: i * 0.1 }}
               className={`relative rounded-sm p-8 flex flex-col gap-6 border transition-all duration-300 ${
                 plan.highlight
-                  ? "bg-rf-red border-rf-red"
+                  ? "bg-rf-red border-rf-red shadow-2xl shadow-rf-red/20"
                   : "bg-rf-dark border-white/10 hover:border-rf-red/40"
               }`}
             >
@@ -84,12 +84,22 @@ export default function Plans() {
                 <h3 className="font-title font-bold text-3xl uppercase tracking-widest text-white">
                   {plan.name}
                 </h3>
-                <p className={`font-body text-sm mt-1 ${plan.highlight ? "text-white/80" : "text-rf-gray"}`}>
+                <div className="flex items-baseline gap-1 mt-4">
+                  <span className={`text-sm font-body ${plan.highlight ? "text-white/80" : "text-rf-gray"}`}>R$</span>
+                  <span className="text-5xl font-title font-bold text-white">
+                    {plan.price.split(',')[0]}
+                  </span>
+                  <span className="text-2xl font-title font-bold text-white">
+                    ,{plan.price.split(',')[1]}
+                  </span>
+                  <span className={`text-xs font-body ml-1 ${plan.highlight ? "text-white/60" : "text-rf-gray"}`}>/mês</span>
+                </div>
+                <p className={`font-body text-xs mt-3 uppercase tracking-wider ${plan.highlight ? "text-white/80" : "text-rf-gray"}`}>
                   {plan.tagline}
                 </p>
               </div>
 
-              <ul className="space-y-3 flex-1">
+              <ul className="space-y-3 flex-1 border-t border-white/10 pt-6">
                 {plan.features.map((feat) => (
                   <li key={feat} className="flex items-start gap-3">
                     <Check

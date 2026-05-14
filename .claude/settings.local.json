@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Test-Path *)",
+      "PowerShell(npm *)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\vilan\" -Force -ErrorAction SilentlyContinue | ForEach-Object { $_.Name })",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\vilan\\\\claude-skills\" -ErrorAction SilentlyContinue | ForEach-Object { $_.Name })",
+      "PowerShell(New-Item *)",
+      "PowerShell(try { $resp = Invoke-WebRequest -Uri \"http://localhost:3001\" -TimeoutSec 10 -ErrorAction Stop; Write-Host \"HTTP $\\($resp.StatusCode\\) — Body length: $\\($resp.Content.Length\\) chars\" } catch { Write-Host \"Error: $_\" })",
+      "Bash(curl *)",
+      "PowerShell(Start-Process \"http://localhost:3001\")",
+      "PowerShell(Get-Process *)",
+      "PowerShell(Move-Item *)"
+    ]
+  }
+}

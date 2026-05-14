@@ -45,7 +45,7 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${rajdhani.variable} ${montserrat.variable}`}
     >
-      <body className="bg-black text-white antialiased">{children}</body>
+      <body className="bg-black text-white antialiased" suppressHydrationWarning>{children}</body>
     </html>
   );
 }
