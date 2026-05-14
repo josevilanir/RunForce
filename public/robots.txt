@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://runforceteam.com.br/sitemap.xml
