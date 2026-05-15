@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Rajdhani, Montserrat } from "next/font/google";
+import { Rajdhani, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import "./landing.css";
 
 const rajdhani = Rajdhani({
   weight: ["400", "500", "600", "700"],
@@ -9,10 +10,15 @@ const rajdhani = Rajdhani({
   display: "swap",
 });
 
-const montserrat = Montserrat({
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-montserrat",
+const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
   display: "swap",
 });
 
@@ -43,9 +49,10 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${rajdhani.variable} ${montserrat.variable}`}
+      className={`${rajdhani.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="bg-black text-white antialiased" suppressHydrationWarning>{children}</body>
+      <body className="antialiased" suppressHydrationWarning>{children}</body>
     </html>
   );
 }
+

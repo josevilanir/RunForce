@@ -1,59 +1,43 @@
-import Divider from "@/components/ui/Divider";
-import { AtSign, MessageCircle } from "lucide-react";
+"use client";
 
-export default function Footer() {
-  const year = new Date().getFullYear();
+import React from 'react';
+import { RFLogo } from "./Header";
 
+interface FooterProps {
+  accent?: string;
+}
+
+const FootCol = ({ title, links }: { title: string; links: string[] }) => (
+  <div>
+    <div className="t-mono">{title}</div>
+    <ul style={{ listStyle: 'none', padding: 0, margin: '20px 0 0', display: 'grid', gap: 10 }}>
+      {links.map(l => <li key={l}><a href="#" style={{ color: '#999', fontSize: 14, textDecoration: 'none' }}>{l}</a></li>)}
+    </ul>
+  </div>
+);
+
+export default function Footer({ accent = '#E30613' }: FooterProps) {
   return (
-    <footer className="bg-black border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-          <div className="flex flex-col gap-3">
-            <a href="#hero" className="inline-flex items-center gap-2">
-              <span className="font-title font-bold text-3xl tracking-widest uppercase text-white">
-                Run<span className="text-rf-red">Force</span>
-              </span>
-              <span className="font-body text-xs text-rf-gray uppercase tracking-widest">
-                Team
-              </span>
-            </a>
-            <p className="font-body text-rf-gray text-sm max-w-xs">
-              Mais que corrida. É transformação.
-            </p>
-          </div>
-
-          <div className="flex flex-col gap-4">
-            <p className="font-body text-xs text-rf-gray uppercase tracking-widest">
-              Siga a RunForce
-            </p>
-            <div className="flex items-center gap-4">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram da RunForce Team"
-                className="text-white/60 hover:text-rf-red transition-colors duration-200"
-              >
-                <AtSign size={22} />
-              </a>
-              <a
-                href="https://wa.me/5500000000000"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="WhatsApp da RunForce Team"
-                className="text-white/60 hover:text-rf-red transition-colors duration-200"
-              >
-                <MessageCircle size={22} />
-              </a>
+    <footer>
+      <div className="wrap">
+        <div className="foot-grid">
+          <div>
+            <RFLogo />
+            <div style={{ marginTop: 20, fontFamily: 'var(--rf-font-mono)', fontSize: 11, color: 'var(--rf-text-dim)', letterSpacing: '.2em' }}>
+              MAIS QUE CORRIDA. <span style={{ color: accent }}>É TRANSFORMAÇÃO.</span>
+            </div>
+            <div style={{ marginTop: 32, color: '#666', fontSize: 13, maxWidth: 380 }}>
+              Assessoria de corrida fundada em 2021. CREF 012345-G/SP. São Paulo — Brasil.
             </div>
           </div>
+          <FootCol title="NAVEGAÇÃO" links={['Sobre', 'Pilares', 'Benefícios', 'Planos', 'Galeria']} />
+          <FootCol title="LEGAL" links={['Termos', 'Privacidade', 'Política de cancelamento']} />
+          <FootCol title="REDES" links={['Instagram', 'WhatsApp', 'Strava', 'YouTube']} />
         </div>
-
-        <Divider className="my-8" />
-
-        <p className="font-body text-rf-gray text-xs text-center">
-          © {year} RunForce Team. Todos os direitos reservados.
-        </p>
+        <div style={{ marginTop: 64, paddingTop: 24, borderTop: '1px solid var(--rf-line)', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16, fontFamily: 'var(--rf-font-mono)', fontSize: 10, color: 'var(--rf-text-dim)', letterSpacing: '.2em' }}>
+          <span>© 2026 RUNFORCE TEAM</span>
+          <span>RUN HARD. RUN SMART. RUN TOGETHER.</span>
+        </div>
       </div>
     </footer>
   );

@@ -1,85 +1,48 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ClipboardList, ShieldCheck, HeartPulse, Users, Target, Calendar } from "lucide-react";
-import SectionTitle from "@/components/ui/SectionTitle";
+import React from 'react';
 
-const benefits = [
-  {
-    icon: ClipboardList,
-    title: "Treinos estruturados",
-    desc: "Planilhas personalizadas com periodização adequada ao seu nível e objetivo.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Evolução segura",
-    desc: "Progressão gradual, respeitando limites do corpo e prevenindo lesões.",
-  },
-  {
-    icon: HeartPulse,
-    title: "Acompanhamento contínuo",
-    desc: "Feedback constante do coach, análise de desempenho e ajustes em tempo real.",
-  },
-  {
-    icon: Users,
-    title: "Comunidade forte",
-    desc: "Um time que te motiva, treina junto e celebra cada conquista com você.",
-  },
-  {
-    icon: Target,
-    title: "Metas claras",
-    desc: "Trabalhamos com foco no seu objetivo: tempo, distância, completar ou competir.",
-  },
-  {
-    icon: Calendar,
-    title: "Eventos e provas",
-    desc: "Participação em provas selecionadas com o time e preparação específica para cada race.",
-  },
+const BENEFITS = [
+  { k: 'Treinos estruturados', d: 'Planilha periodizada por nível, objetivo e janela de tempo.', i: '◢' },
+  { k: 'Evolução segura', d: 'Carga progressiva, controle de PSE e prevenção de lesão.', i: '◤' },
+  { k: 'Acompanhamento real', d: 'Feedback semanal por treinador, ajustes finos quando precisa.', i: '◥' },
+  { k: 'Comunidade ativa', d: 'Grupos por pace, treinos coletivos e suporte 7 dias.', i: '◣' },
+  { k: 'Metas e provas', d: 'Calendário de provas, logística e estratégia de corrida.', i: '◆' },
+  { k: 'Eventos exclusivos', d: 'Camps, longões temáticos, workshops e palestras técnicas.', i: '✱' }
 ];
 
-export default function Benefits() {
-  return (
-    <section id="beneficios" className="py-24 lg:py-32 bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="mb-14"
-        >
-          <SectionTitle subtitle="Tudo que você precisa para correr mais, melhor e com mais alegria.">
-            Por que a{" "}
-            <span className="text-rf-red">RunForce</span>
-          </SectionTitle>
-        </motion.div>
+interface BenefitsProps {
+  accent?: string;
+}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {benefits.map((benefit, i) => {
-            const Icon = benefit.icon;
-            return (
-              <motion.div
-                key={benefit.title}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="flex gap-4 p-6 rounded-sm border border-white/8 hover:border-rf-red/40 bg-rf-dark/50 transition-all duration-300 group"
-              >
-                <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center mt-0.5">
-                  <Icon size={22} className="text-rf-red group-hover:scale-110 transition-transform duration-200" />
-                </div>
-                <div>
-                  <h3 className="font-title font-bold text-lg uppercase tracking-wide text-white mb-1.5">
-                    {benefit.title}
-                  </h3>
-                  <p className="font-body text-white/55 text-sm leading-relaxed">{benefit.desc}</p>
-                </div>
-              </motion.div>
-            );
-          })}
+export default function Benefits({ accent = '#E30613' }: BenefitsProps) {
+  return (
+    <section id="beneficios">
+      <div className="wrap">
+        <div className="sec-head reveal">
+          <div>
+            <div className="sec-num" style={{ color: accent }}>03 / BENEFÍCIOS</div>
+            <h2 className="sec-title">O que você ganha<br />ao <span style={{ color: accent }}>entrar no time.</span></h2>
+          </div>
+        </div>
+        <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 1, background: 'var(--rf-line)', border: '1px solid var(--rf-line)' }}>
+          {BENEFITS.map((b, i) => (
+            <div key={i} className="benefit-card" style={{ background: 'var(--rf-bg)', padding: '40px 32px', minHeight: 240, position: 'relative', transition: 'background .2s' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                <span style={{ fontSize: 32, color: accent, lineHeight: 1 }}>{b.i}</span>
+                <span className="t-mono">B/{String(i+1).padStart(2,'0')}</span>
+              </div>
+              <div className="t-display" style={{ fontSize: 'clamp(22px, 2.2vw, 28px)', marginTop: 32, lineHeight: 1.0 }}>{b.k}</div>
+              <div style={{ marginTop: 12, color: '#aaa', fontSize: 14, lineHeight: 1.55 }}>{b.d}</div>
+            </div>
+          ))}
         </div>
       </div>
+      <style jsx>{`
+        .benefit-card:hover {
+          background: #0e0e0e !important;
+        }
+      `}</style>
     </section>
   );
 }

@@ -1,131 +1,67 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
-import SectionTitle from "@/components/ui/SectionTitle";
+import React from 'react';
+import Counter from "@/components/ui/Counter";
 
-const testimonials = [
-  {
-    name: "Ana Carolina",
-    role: "Corredora amadora",
-    text: "Entrei na RunForce sem saber correr direito. Em 6 meses completei minha primeira meia maratona. O método funciona.",
-  },
-  {
-    name: "Rodrigo Mendes",
-    role: "Atleta de performance",
-    text: "Bati meu PR nos 10k depois de 3 meses de acompanhamento. A periodização faz toda a diferença.",
-  },
-  {
-    name: "Juliana Ferreira",
-    role: "Corredora iniciante",
-    text: "O suporte do time é incrível. Nunca me senti sozinha em nenhum treino. Comunidade de verdade.",
-  },
+const TESTIMONIES = [
+  { name: 'Carla M.', tag: 'BAIXOU 12 MIN NA MEIA', quote: 'Cheguei correndo 6:30/km e em 8 meses fechei minha primeira meia em 1h52. O time não me deixou parar.' },
+  { name: 'Rafael S.', tag: 'PRIMEIRA MARATONA', quote: 'Achei que maratona não era pra mim. A planilha respeita meu corpo, a galera respeita meu tempo. Cruzei.' },
+  { name: 'Joana P.', tag: 'VOLTOU APÓS LESÃO', quote: 'Voltei de fascite plantar com medo. Hoje treino três vezes por semana sem dor e com pace melhor que antes.' }
 ];
 
-export default function SocialProof() {
-  const [current, setCurrent] = useState(0);
+interface SocialProofProps {
+  accent?: string;
+}
 
-  const prev = () => setCurrent((c) => (c === 0 ? testimonials.length - 1 : c - 1));
-  const next = () => setCurrent((c) => (c === testimonials.length - 1 ? 0 : c + 1));
-
+export default function SocialProof({ accent = '#E30613' }: SocialProofProps) {
   return (
-    <section className="py-24 lg:py-32 bg-rf-dark">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="mb-14"
-        >
-          <SectionTitle subtitle="Resultados reais de quem já faz parte do time.">
-            O que o time{" "}
-            <span className="text-rf-red">diz</span>
-          </SectionTitle>
-        </motion.div>
-
-        {/* Testimonial carousel */}
-        <div className="max-w-3xl mx-auto">
-          <div className="relative bg-black rounded-sm p-8 md:p-12 border border-white/10 min-h-[220px] flex flex-col justify-between">
-            <Quote size={32} className="text-rf-red/40 mb-4" />
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.35 }}
-              >
-                <p className="font-body text-white/80 text-lg leading-relaxed italic mb-6">
-                  "{testimonials[current].text}"
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-rf-red/20 flex items-center justify-center">
-                    <span className="font-title font-bold text-rf-red text-sm">
-                      {testimonials[current].name[0]}
-                    </span>
-                  </div>
-                  <div>
-                    <p className="font-title font-bold text-white text-base uppercase tracking-wide">
-                      {testimonials[current].name}
-                    </p>
-                    <p className="font-body text-rf-gray text-xs">{testimonials[current].role}</p>
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          <div className="flex items-center justify-center gap-4 mt-6">
-            <button
-              onClick={prev}
-              aria-label="Depoimento anterior"
-              className="p-2 text-white/50 hover:text-rf-red transition-colors"
-            >
-              <ChevronLeft size={24} />
-            </button>
-            <div className="flex gap-2">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrent(i)}
-                  aria-label={`Depoimento ${i + 1}`}
-                  className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                    i === current ? "bg-rf-red w-6" : "bg-white/30"
-                  }`}
-                />
-              ))}
-            </div>
-            <button
-              onClick={next}
-              aria-label="Próximo depoimento"
-              className="p-2 text-white/50 hover:text-rf-red transition-colors"
-            >
-              <ChevronRight size={24} />
-            </button>
+    <section id="prova">
+      <div className="wrap">
+        <div className="sec-head reveal">
+          <div>
+            <div className="sec-num" style={{ color: accent }}>05 / RESULTADOS</div>
+            <h2 className="sec-title">Quem corre <span style={{ color: accent }}>com a gente</span><br />não corre sozinho.</h2>
           </div>
         </div>
 
-        {/* Photo grid placeholder */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-16"
-        >
-          {[1, 2, 3, 4].map((n) => (
-            <div
-              key={n}
-              className="aspect-square bg-black rounded-sm border border-white/10 flex items-center justify-center"
-            >
-              <p className="font-body text-xs text-white/20 text-center px-2">
-                Foto {n}<br />do time
-              </p>
+        {/* Stats row */}
+        <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 1, background: 'var(--rf-line)', border: '1px solid var(--rf-line)', marginBottom: 64 }}>
+          {[
+            { n: 240, s: '+', l: 'Atletas no time' },
+            { n: 142, s: '', l: 'Medalhas em 2025' },
+            { n: 38, s: '', l: 'Provas concluídas' },
+            { n: 4, s: '.9', l: 'Avaliação média' }
+          ].map((s, i) => (
+            <div key={i} style={{ background: '#050505', padding: '36px 28px' }}>
+              <div className="t-display" style={{ fontSize: 'clamp(44px, 4.4vw, 64px)', color: '#fff', lineHeight: 1 }}>
+                <Counter to={s.n} suffix={s.s} />
+              </div>
+              <div className="t-mono" style={{ marginTop: 8 }}>{s.l}</div>
             </div>
           ))}
-        </motion.div>
+        </div>
+
+        <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 24 }}>
+          {TESTIMONIES.map((t, i) => (
+            <div key={i} className="card" style={{ padding: 32, position: 'relative', display: 'flex', flexDirection: 'column', gap: 24 }}>
+              <div className="corner tl" /><div className="corner br" />
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ fontFamily: 'var(--rf-font-title)', fontWeight: 700, color: accent, fontSize: 56, lineHeight: .7 }}>"</span>
+                <span className="t-mono" style={{ color: accent }}>{t.tag}</span>
+              </div>
+              <p style={{ fontSize: 17, lineHeight: 1.5, margin: 0, color: '#ddd' }}>{t.quote}</p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginTop: 'auto', paddingTop: 20, borderTop: '1px solid var(--rf-line)' }}>
+                <div style={{ width: 44, height: 44, borderRadius: '50%', background: '#1a1a1a', border: '1px solid var(--rf-line-strong)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--rf-font-title)', fontSize: 18 }}>
+                  {t.name.charAt(0)}
+                </div>
+                <div>
+                  <div style={{ fontFamily: 'var(--rf-font-title)', fontWeight: 600, fontSize: 16 }}>{t.name}</div>
+                  <div className="t-mono" style={{ fontSize: 10, marginTop: 2 }}>ATLETA RUNFORCE</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

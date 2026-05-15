@@ -1,177 +1,97 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useForm } from "react-hook-form";
-import { useState } from "react";
-import { MessageCircle, AtSign, Send } from "lucide-react";
-import SectionTitle from "@/components/ui/SectionTitle";
-import Button from "@/components/ui/Button";
+import React, { useState } from 'react';
+import SpeedLines from "@/components/ui/SpeedLines";
 
-interface FormData {
-  name: string;
-  email: string;
-  message: string;
+interface ContactProps {
+  accent?: string;
 }
 
-const WA_NUMBER = "5500000000000";
-const WA_MESSAGE = encodeURIComponent("Olá! Quero saber mais sobre a RunForce Team.");
+const Field = ({ label, name, type = 'text', placeholder }: any) => (
+  <div className="reveal">
+    <label className="t-mono" htmlFor={name} style={{ display: 'block', marginBottom: 8 }}>{label}</label>
+    <input id={name} name={name} type={type} placeholder={placeholder} style={{
+      width: '100%', background: 'transparent', border: 'none', borderBottom: '1px solid var(--rf-line-strong)',
+      padding: '14px 0', color: '#fff', fontFamily: 'var(--rf-font-body)', fontSize: 16, outline: 'none'
+    }} />
+  </div>
+);
 
-export default function Contact() {
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<FormData>();
-
-  const onSubmit = async (data: FormData) => {
-    setStatus("sending");
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (!res.ok) throw new Error("Erro no servidor");
-      setStatus("success");
-      reset();
-    } catch {
-      setStatus("error");
-    }
-  };
-
-  const inputClass =
-    "w-full bg-rf-dark border border-white/15 rounded-sm px-4 py-3 font-body text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-rf-red transition-colors duration-200";
-  const errorClass = "font-body text-rf-red text-xs mt-1";
+export default function Contact({ accent = '#E30613' }: ContactProps) {
+  const [sent, setSent] = useState(false);
 
   return (
-    <section id="contato" className="py-24 lg:py-32 bg-rf-dark relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-rf-red/30" />
+    <section id="contato" style={{ background: '#0a0a0a', borderTop: `1px solid ${accent}` }}>
+      <SpeedLines density={14} opacity={.25} />
+      <div className="wrap" style={{ position: 'relative', zIndex: 2 }}>
+        <div className="sec-head reveal">
+          <div>
+            <div className="sec-num" style={{ color: accent }}>07 / ENTRE NO TIME</div>
+            <h2 className="sec-title">Hora de <span style={{ color: accent }}>largar.</span></h2>
+          </div>
+          <div className="t-mono" style={{ maxWidth: 340 }}>
+            Responda em até 2 minutos. Em até 24h um treinador entra em contato pelo WhatsApp.
+          </div>
+        </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="mb-14"
-        >
-          <SectionTitle subtitle="Pronto para dar o próximo passo? Fale com a gente.">
-            Entre em{" "}
-            <span className="text-rf-red">contato</span>
-          </SectionTitle>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-          {/* Left: CTA channels */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col gap-6"
-          >
-            <p className="font-body text-white/70 text-base leading-relaxed">
-              A maneira mais rápida de entrar para o time é pelo WhatsApp. Manda uma mensagem
-              e a gente responde rapidinho.
-            </p>
-
-            <a
-              href={`https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#20b858] text-white font-title font-bold uppercase tracking-widest text-base px-7 py-4 rounded-sm transition-colors duration-200 w-fit"
-            >
-              <MessageCircle size={20} />
-              Falar no WhatsApp
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr)', gap: 48 }} className="contato-grid">
+          <div className="reveal">
+            <a href="https://wa.me/5511999999999?text=Quero%20entrar%20para%20o%20time%20RunForce"
+               target="_blank" rel="noopener"
+               className="card" style={{ padding: 28, display: 'flex', alignItems: 'center', gap: 20, textDecoration: 'none', marginBottom: 16 }}>
+              <div className="corner tl" /><div className="corner br" />
+              <div style={{ width: 56, height: 56, background: accent, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--rf-font-title)', fontSize: 24, color: '#fff' }}>W</div>
+              <div style={{ flex: 1 }}>
+                <div className="t-mono" style={{ color: accent }}>WHATSAPP DIRETO</div>
+                <div style={{ fontFamily: 'var(--rf-font-title)', fontSize: 22, fontWeight: 600, marginTop: 4, color: '#fff' }}>(11) 99999-9999</div>
+              </div>
+              <span className="arr" style={{ width: 24, color: '#fff' }} />
             </a>
-
-            <div className="flex items-center gap-4 mt-2">
-              <div className="h-px flex-1 bg-white/10" />
-              <span className="font-body text-xs text-white/30 uppercase tracking-widest">ou siga a RunForce</span>
-              <div className="h-px flex-1 bg-white/10" />
+            <a href="https://instagram.com/runforceteam" target="_blank" rel="noopener"
+               className="card" style={{ padding: 28, display: 'flex', alignItems: 'center', gap: 20, textDecoration: 'none', marginBottom: 16 }}>
+              <div className="corner tl" /><div className="corner br" />
+              <div style={{ width: 56, height: 56, border: '1px solid #fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--rf-font-title)', fontSize: 22, color: '#fff' }}>IG</div>
+              <div style={{ flex: 1 }}>
+                <div className="t-mono">INSTAGRAM</div>
+                <div style={{ fontFamily: 'var(--rf-font-title)', fontSize: 22, fontWeight: 600, marginTop: 4, color: '#fff' }}>@runforceteam</div>
+              </div>
+            </a>
+            <div className="card" style={{ padding: 28 }}>
+              <div className="corner tl" /><div className="corner br" />
+              <div className="t-mono">PONTO DE TREINO</div>
+              <div style={{ fontFamily: 'var(--rf-font-title)', fontSize: 20, fontWeight: 600, marginTop: 6 }}>Parque do Ibirapuera — Portão 3</div>
+              <div style={{ color: '#aaa', fontSize: 14, marginTop: 4 }}>Terças e quintas 06h00 • Sábados 06h30</div>
             </div>
+          </div>
 
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-white/60 hover:text-rf-red transition-colors duration-200 font-body text-sm"
-            >
-              <AtSign size={18} />
-              @runforceteam
-            </a>
-          </motion.div>
-
-          {/* Right: Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-4">
-              <div>
-                <input
-                  {...register("name", { required: "Informe seu nome" })}
-                  placeholder="Seu nome"
-                  className={inputClass}
-                  aria-label="Nome"
-                />
-                {errors.name && <p className={errorClass}>{errors.name.message}</p>}
+          <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} style={{ display: 'flex', flexDirection: 'column', gap: 16 }} className="reveal">
+            <Field label="Nome completo" name="name" />
+            <Field label="WhatsApp" name="phone" placeholder="(11) 99999-9999" />
+            <Field label="E-mail" name="email" type="email" />
+            <div>
+              <label className="t-mono" style={{ display: 'block', marginBottom: 8 }}>Nível atual</label>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 8 }}>
+                {['Iniciante', 'Em evolução', 'Performance'].map(l => (
+                  <label key={l} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '14px 8px', border: '1px solid var(--rf-line-strong)', cursor: 'pointer', fontSize: 13, fontFamily: 'var(--rf-font-title)', textTransform: 'uppercase' }}>
+                    <input type="radio" name="lvl" style={{ display: 'none' }} />{l}
+                  </label>
+                ))}
               </div>
-
-              <div>
-                <input
-                  {...register("email", {
-                    required: "Informe seu e-mail",
-                    pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "E-mail inválido" },
-                  })}
-                  type="email"
-                  placeholder="Seu e-mail"
-                  className={inputClass}
-                  aria-label="E-mail"
-                />
-                {errors.email && <p className={errorClass}>{errors.email.message}</p>}
-              </div>
-
-              <div>
-                <textarea
-                  {...register("message", { required: "Escreva uma mensagem" })}
-                  placeholder="Sua mensagem"
-                  rows={5}
-                  className={`${inputClass} resize-none`}
-                  aria-label="Mensagem"
-                />
-                {errors.message && <p className={errorClass}>{errors.message.message}</p>}
-              </div>
-
-              <Button
-                type="submit"
-                variant="primary"
-                size="md"
-                disabled={status === "sending"}
-                className="w-full gap-2"
-              >
-                <Send size={16} />
-                {status === "sending" ? "Enviando..." : "Enviar mensagem"}
-              </Button>
-
-              {status === "success" && (
-                <p className="font-body text-green-400 text-sm text-center">
-                  Mensagem enviada! Entraremos em contato em breve.
-                </p>
-              )}
-              {status === "error" && (
-                <p className="font-body text-rf-red text-sm text-center">
-                  Erro ao enviar. Tente pelo WhatsApp.
-                </p>
-              )}
-            </form>
-          </motion.div>
+            </div>
+            <button type="submit" className="btn btn-primary" style={{ background: accent, marginTop: 12, justifyContent: 'center' }}>
+              {sent ? '✓ Enviado — falaremos em 24h' : 'Quero entrar para o time'} <span className="arr" />
+            </button>
+            <div className="t-mono" style={{ fontSize: 10 }}>SEUS DADOS SÃO USADOS SÓ PRA ENTRAR EM CONTATO. NADA DE SPAM.</div>
+          </form>
         </div>
       </div>
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .contato-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
