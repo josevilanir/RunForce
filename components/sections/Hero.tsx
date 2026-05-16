@@ -50,7 +50,7 @@ export default function Hero({ headline = 'main', accent = '#E30613' }: HeroProp
           <div className="hero-v3-left">
             <div className="t-eyebrow hero-eyebrow" style={{ color: accent }}>
               <span style={{ width: 36, height: 1, background: accent, display: 'inline-block' }}></span>
-              ASSESSORIA DE CORRIDA / EST. 2021
+              ASSESSORIA DE CORRIDA / EST. 2026
             </div>
             <h1 className="t-display hero-v3-headline">
               <Headline accent={accent} />
@@ -109,16 +109,17 @@ export default function Hero({ headline = 'main', accent = '#E30613' }: HeroProp
       <div className="hero-marker-bar">
         <span>RUNFORCE TEAM</span>
         <span className="dot" />
-        <span>SÃO PAULO — BRASIL</span>
+        <span>NATAL — BRASIL</span>
         <span className="dot" />
-        <span>EST. 2021</span>
+        <span>EST. 2026</span>
         <span className="dot" />
         <span>VOL. 2026</span>
       </div>
 
       <style jsx>{`
-        @keyframes stripeIn { from{transform:translateX(110%) skewX(-12deg)} to{transform:translateX(0) skewX(-12deg)} }
-        @keyframes stripeEdgeIn { from{transform:translateX(110%) skewX(-12deg);opacity:0} to{transform:translateX(0) skewX(-12deg);opacity:.18} }
+        @keyframes stripeIn { from{transform:translateX(110%) skewX(12deg)} to{transform:translateX(0) skewX(12deg)} }
+        @keyframes stripeEdgeIn { from{transform:translateX(110%) skewX(12deg);opacity:0} to{transform:translateX(0) skewX(12deg);opacity:.18} }
+        @keyframes stripeMobileIn { from{clip-path:polygon(100% 0,100% 0,100% 100%,100% 100%);opacity:0} to{clip-path:polygon(68% 0,100% 0,100% 100%,52% 100%);opacity:1} }
         @keyframes lineRise { 0%{transform:translateY(110%);opacity:0} 60%{opacity:1} 100%{transform:translateY(0);opacity:1} }
         @keyframes fadeUp { 0%{transform:translateY(20px);opacity:0} 100%{transform:translateY(0);opacity:1} }
         @keyframes scrollHint { 0%,100%{transform:scaleX(.4);transform-origin:left} 50%{transform:scaleX(1)} }
@@ -140,13 +141,13 @@ export default function Hero({ headline = 'main', accent = '#E30613' }: HeroProp
           position:absolute;
           top:-15%; right:-12%;
           width:62%; height:140%;
-          transform:skewX(-12deg);
+          transform:skewX(12deg);
           z-index:1;
           animation: stripeIn 1.2s cubic-bezier(0.23, 1, 0.32, 1);
         }
         .hero-stripe-edge,.hero-stripe-edge-thin{
           position:absolute; top:-15%; height:140%;
-          background:#fff; transform:skewX(-12deg); opacity:.18;
+          background:#fff; transform:skewX(12deg); opacity:.18;
           z-index:2;
           animation: stripeEdgeIn 1.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
@@ -155,7 +156,7 @@ export default function Hero({ headline = 'main', accent = '#E30613' }: HeroProp
         .hero-stripe-mask{
           position:absolute; top:0; right:0; width:55%; height:100%;
           overflow:hidden; z-index:3; pointer-events:none;
-          clip-path:polygon(20% 0, 100% 0, 100% 100%, 0 100%);
+          clip-path:polygon(0% 0, 100% 0, 100% 100%, 20% 100%);
         }
 
         .grain{position:absolute;inset:0;pointer-events:none;opacity:.04;background-image:radial-gradient(rgba(255,255,255,.6) 1px, transparent 1px);background-size:3px 3px;z-index:1}
@@ -192,13 +193,20 @@ export default function Hero({ headline = 'main', accent = '#E30613' }: HeroProp
           display:flex; gap:16px; margin-top:36px; flex-wrap:wrap;
           animation: fadeUp 0.8s ease-out 0.8s both;
         }
-        .hero-cta-primary{ position:relative; }
+        .hero-v3-ctas :global(.btn){
+          height:48px;
+          padding:0 28px;
+          clip-path:none;
+          border-radius:50px;
+          font-size:16px;
+        }
+        .hero-cta-primary{ position:relative; overflow:hidden; }
         .hero-cta-primary::before{
           content:""; position:absolute; inset:0;
           background:linear-gradient(90deg, transparent, rgba(255,255,255,.3), transparent);
           transform:translateX(-100%);
           animation:shimmer 3s ease 1.5s infinite;
-          clip-path:polygon(0 0, 100% 0, 96% 100%, 0 100%);
+          border-radius:inherit;
         }
         @keyframes shimmer { 0%,40%{transform:translateX(-100%)} 60%,100%{transform:translateX(100%)} }
 
@@ -282,25 +290,171 @@ export default function Hero({ headline = 'main', accent = '#E30613' }: HeroProp
         }
         .hero-marker-bar .dot{ width:4px; height:4px; background:currentColor; border-radius:50%; opacity:.5 }
 
-        /* Responsive */
-        @media (max-width: 768px){
-          .hero-v3{ padding:130px 0 100px; min-height:auto; }
-          .hero-v3-grid{ grid-template-columns: 1fr; gap:32px; }
-          .hero-stripe{ width:70%; right:-20%; height:100%; top:0; bottom:0; transform:skewX(-10deg); transform-origin: top right; }
-          .hero-stripe-edge,.hero-stripe-edge-thin{ display:none }
-          .hero-stripe-mask{ width:70%; height:100%; top:0; right:-20%; clip-path:none; }
-          .hero-v3-right{ text-align:left; padding-right:0; padding-top:32px; }
-          .hero-meganum{ justify-content:flex-start; font-size:clamp(120px, 32vw, 220px); }
-          .hero-substats{ justify-content:flex-start; gap:18px }
-          .hero-substat{ text-align:left }
-          .hero-vert{ display:none }
-          .hero-marker-bar{ padding:12px 20px; gap:12px; font-size:9px; flex-wrap:wrap }
-          .hero-marker-bar .dot{ display:none }
+        /* ── Mobile ≤ 768px — split-screen diagonal ────────────────── */
+        @media (max-width: 768px) {
+          .hero-v3 {
+            padding: 90px 0 56px;
+            min-height: 100vh;
+            align-items: center;
+          }
+
+          /*
+           * Full-height diagonal stripe: clip-path gives pixel-precise control
+           * over the boundary without displacement drift from skewX over tall sections.
+           * Diagonal goes from 52 % (top-left) → 68 % (bottom-left), centred on the
+           * 60 % column boundary of the 1.2 / 0.8 grid split.
+           */
+          .hero-stripe {
+            top: 0; bottom: 0; left: 0; right: 0;
+            width: 100%; height: 100%;
+            transform: none;
+            clip-path: polygon(68% 0, 100% 0, 100% 100%, 52% 100%);
+            animation: stripeMobileIn 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+          }
+
+          .hero-stripe-edge, .hero-stripe-edge-thin { display: none; }
+
+          /* Speed-lines mask follows the same diagonal boundary */
+          .hero-stripe-mask {
+            top: 0; bottom: 0; left: 0; right: 0;
+            width: 100%; height: 100%;
+            clip-path: polygon(68% 0, 100% 0, 100% 100%, 52% 100%);
+          }
+
+          /* Two-column layout — dark left / red right */
+          .hero-v3-grid {
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 8px;
+            align-items: center;
+          }
+
+          /* ─ Left column: headline, sub-text, buttons on the dark side ─ */
+          .hero-v3-headline {
+            font-size: clamp(32px, 9vw, 54px);
+            line-height: 1.0;
+          }
+
+          .hero-eyebrow {
+            font-size: 8.5px;
+            letter-spacing: .12em;
+            gap: 5px;
+            margin-bottom: 14px;
+            font-weight: 700;
+          }
+          /* Hide the decorative 36 px horizontal rule — too wide for the column */
+          .hero-eyebrow :global(span:first-child) { display: none; }
+
+          .hero-v3-sub {
+            font-size: 11px;
+            margin-top: 8px;
+            max-width: 100%;
+            line-height: 1.4;
+            color: rgba(255,255,255,0.7);
+          }
+
+          /* Stack buttons vertically so they stay fully inside the dark column */
+          .hero-v3-ctas {
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 16px;
+          }
+          .hero-v3-ctas :global(.btn) {
+            width: 85%;
+            justify-content: center;
+            height: 30px;
+            font-size: 10px;
+            padding: 0 10px;
+            border-radius: 50px;
+            clip-path: none;
+          }
+
+          /* ─ Right column: numbers inside the red zone ─ */
+          .hero-v3-right {
+            text-align: right;
+            padding-right: 8px;
+            padding-left: 0;
+            padding-top: 0;
+          }
+
+          .hero-meganum-label {
+            justify-content: flex-end;
+            font-size: 7px;
+            letter-spacing: 0;
+            gap: 4px;
+            margin-bottom: 4px;
+          }
+          /* Slash "/" is decorative — remove to save width */
+          .meganum-slash { display: none; }
+
+          .hero-meganum {
+            justify-content: flex-end;
+            font-size: clamp(52px, 14vw, 88px);
+            line-height: 0.88;
+          }
+
+          .hero-substats {
+            justify-content: flex-end;
+            gap: 8px;
+            flex-wrap: nowrap;
+            margin-top: 8px;
+          }
+          .hero-substat { text-align: right; }
+          .hero-substat-n { font-size: 15px; }
+          /* Labels are too wide for the column — hide, keep numbers + dividers */
+          .hero-substat-l { display: none; }
+          .hero-substat-div { height: 22px; }
+
+          /* Vert text: along the far-right edge of the stats block */
+          .hero-vert {
+            display: block;
+            left: auto;
+            right: 0;
+            top: 0;
+            transform: rotate(90deg);
+            transform-origin: right top;
+            font-size: 7px;
+            letter-spacing: .12em;
+            opacity: 0.3;
+            animation: none;
+          }
+
+          .hero-scroll { bottom: 44px; }
+
+          .hero-marker-bar {
+            padding: 10px 16px;
+            gap: 10px;
+            font-size: 8px;
+            flex-wrap: wrap;
+          }
+          .hero-marker-bar .dot { display: none; }
         }
-        @media (max-width: 560px){
-          .hero-substats{ flex-wrap:wrap; gap:14px }
-          .hero-substat-div{ display:none }
-          .hero-substat-n{ font-size:24px }
+
+        /* ── Small mobile ≤ 560px ──────────────────────────────────── */
+        @media (max-width: 560px) {
+          /* Widen left column slightly, shift the diagonal to match */
+          .hero-v3-grid { grid-template-columns: 1.35fr 0.65fr; gap: 6px; }
+
+          /* Recalculate diagonal: centred on the new ~67 % column boundary */
+          .hero-stripe { animation: none; clip-path: polygon(73% 0, 100% 0, 100% 100%, 57% 100%); }
+          .hero-stripe-mask { clip-path: polygon(73% 0, 100% 0, 100% 100%, 57% 100%); }
+
+          .hero-v3-headline { font-size: clamp(28px, 8vw, 42px); }
+          .hero-meganum { font-size: clamp(40px, 13vw, 60px); }
+          .hero-substat-n { font-size: 13px; }
+          /* Dividers stay visible — they define the technical identity */
+          .hero-substat-div { display: block; height: 20px; }
+        }
+
+        /* ── Very small ≤ 400px ────────────────────────────────────── */
+        @media (max-width: 400px) {
+          /* Give even more room to the headline at the expense of the stat column */
+          .hero-v3-grid { grid-template-columns: 1.5fr 0.5fr; gap: 4px; }
+          .hero-stripe { clip-path: polygon(78% 0, 100% 0, 100% 100%, 62% 100%); }
+          .hero-stripe-mask { clip-path: polygon(78% 0, 100% 0, 100% 100%, 62% 100%); }
+          .hero-meganum { font-size: clamp(34px, 11vw, 48px); }
+          .hero-v3-headline { font-size: clamp(24px, 7vw, 36px); }
+          .hero-substat-n { font-size: 12px; }
+          .hero-substat-div { height: 18px; }
         }
       `}</style>
     </section>

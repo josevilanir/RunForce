@@ -27,7 +27,7 @@ export default function Footer({ accent = '#E30613' }: FooterProps) {
               MAIS QUE CORRIDA. <span style={{ color: accent }}>É TRANSFORMAÇÃO.</span>
             </div>
             <div style={{ marginTop: 32, color: '#666', fontSize: 13, maxWidth: 380 }}>
-              Assessoria de corrida fundada em 2021. CREF 012345-G/SP. São Paulo — Brasil.
+              Assessoria de corrida fundada em 2026. CREF 012345-G/RN. Natal — Brasil.
             </div>
           </div>
           <FootCol title="NAVEGAÇÃO" links={['Sobre', 'Pilares', 'Benefícios', 'Planos', 'Galeria']} />
