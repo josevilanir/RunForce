@@ -50,6 +50,11 @@ export default function Gallery({ accent = '#E30613' }: GalleryProps) {
         .gal-track::-webkit-scrollbar {
           display: none;
         }
+        @media (max-width: 768px) {
+          .gal-track {
+            padding: 0 20px 20px !important;
+          }
+        }
       `}</style>
     </section>
   );
