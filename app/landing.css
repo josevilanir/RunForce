@@ -223,47 +223,6 @@ section {
   letter-spacing: .2em;
 }
 
-.marquee {
-  overflow: hidden;
-  padding: 24px 0;
-  border-top: 1px solid var(--rf-line);
-  border-bottom: 1px solid var(--rf-line);
-  white-space: nowrap;
-}
-
-.marquee-track {
-  display: inline-flex;
-  animation: marquee 40s linear infinite;
-}
-
-.marquee-item {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  padding-right: 40px;
-  font-family: var(--rf-font-title);
-  font-size: 64px;
-  font-weight: 700;
-  color: #fff;
-}
-
-.marquee-item .outline {
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, .3);
-}
-
-.marquee-item .star {
-  font-size: 32px;
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0)
-  }
-  to {
-    transform: translateX(-33.333%)
-  }
-}
 
 .hdr {
   position: fixed;
@@ -416,18 +375,4 @@ footer {
     gap: 32px !important;
   }
 
-  /* Ticker/Marquee: smaller text on phones */
-  .marquee-item {
-    font-size: 40px;
-    gap: 24px;
-    padding-right: 24px;
-  }
-
-  .marquee-item .star {
-    font-size: 20px;
-  }
-
-  .marquee {
-    padding: 18px 0;
-  }
 }

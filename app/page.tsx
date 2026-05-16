@@ -11,18 +11,7 @@ import Plans from "@/components/sections/Plans";
 import SocialProof from "@/components/sections/SocialProof";
 import Contact from "@/components/sections/Contact";
 import Gallery from "@/components/sections/Gallery";
-import Ticker from "@/components/sections/Ticker";
 
-const TICKER_ITEMS = [
-  { text: 'DISCIPLINA' },
-  { text: 'FOCO', outline: true },
-  { text: 'EQUIPE' },
-  { text: 'EVOLUÇÃO', outline: true },
-  { text: 'PERFORMANCE' },
-  { text: 'RUN HARD', outline: true },
-  { text: 'RUN SMART' },
-  { text: 'RUN TOGETHER', outline: true }
-];
 
 export default function LandingPage() {
   const accent = "#E30613";
@@ -49,13 +38,9 @@ export default function LandingPage() {
       
       <Hero headline="main" accent={accent} />
       
-      <Ticker items={TICKER_ITEMS} accent={accent} />
-      
       <About accent={accent} />
       
       <Pillars accent={accent} />
-      
-      <Ticker items={TICKER_ITEMS} accent={accent} />
       
       <Benefits accent={accent} />
       

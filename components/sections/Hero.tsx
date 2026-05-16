@@ -286,9 +286,9 @@ export default function Hero({ headline = 'main', accent = '#E30613' }: HeroProp
         @media (max-width: 768px){
           .hero-v3{ padding:130px 0 100px; min-height:auto; }
           .hero-v3-grid{ grid-template-columns: 1fr; gap:32px; }
-          .hero-stripe{ width:120%; right:-30%; height:55%; top:auto; bottom:8%; }
+          .hero-stripe{ width:70%; right:-20%; height:100%; top:0; bottom:0; transform:skewX(-10deg); transform-origin: top right; }
           .hero-stripe-edge,.hero-stripe-edge-thin{ display:none }
-          .hero-stripe-mask{ width:100%; height:55%; top:auto; bottom:8%; clip-path:polygon(8% 0, 100% 0, 100% 100%, 0 100%); }
+          .hero-stripe-mask{ width:70%; height:100%; top:0; right:-20%; clip-path:none; }
           .hero-v3-right{ text-align:left; padding-right:0; padding-top:32px; }
           .hero-meganum{ justify-content:flex-start; font-size:clamp(120px, 32vw, 220px); }
           .hero-substats{ justify-content:flex-start; gap:18px }
