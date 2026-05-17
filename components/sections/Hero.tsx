@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import Counter from "@/components/ui/Counter";
 import SpeedLines from "@/components/ui/SpeedLines";
 
 interface HeroProps {
@@ -68,31 +67,6 @@ export default function Hero({ headline = 'main', accent = '#E30613' }: HeroProp
 
           {/* RIGHT — mega number on stripe */}
           <div className="hero-v3-right">
-            <div className="hero-meganum-label">
-              <span className="meganum-slash">/</span>
-              <span>ATLETAS NO TIME</span>
-              <span className="meganum-pulse" />
-            </div>
-            <div className="hero-meganum">
-              <Counter to={240} duration={2200} autostart />
-              <span className="meganum-plus">+</span>
-            </div>
-            <div className="hero-substats">
-              <div className="hero-substat">
-                <div className="hero-substat-n"><Counter to={142} duration={2400} autostart /></div>
-                <div className="hero-substat-l">MEDALHAS 2025</div>
-              </div>
-              <div className="hero-substat-div" />
-              <div className="hero-substat">
-                <div className="hero-substat-n"><Counter to={97} suffix="%" duration={2000} autostart /></div>
-                <div className="hero-substat-l">RENOVAÇÃO</div>
-              </div>
-              <div className="hero-substat-div" />
-              <div className="hero-substat">
-                <div className="hero-substat-n"><Counter to={38} duration={2200} autostart /></div>
-                <div className="hero-substat-l">PROVAS</div>
-              </div>
-            </div>
             {/* Vertical text along edge */}
             <div className="hero-vert">RF/0001 — RUN HARD. RUN SMART. RUN TOGETHER.</div>
           </div>

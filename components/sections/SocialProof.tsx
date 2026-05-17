@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import Counter from "@/components/ui/Counter";
 
 const TESTIMONIES = [
   { name: 'Carla M.', tag: 'BAIXOU 12 MIN NA MEIA', quote: 'Cheguei correndo 6:30/km e em 8 meses fechei minha primeira meia em 1h52. O time não me deixou parar.' },
@@ -24,22 +23,7 @@ export default function SocialProof({ accent = '#E30613' }: SocialProofProps) {
           </div>
         </div>
 
-        {/* Stats row */}
-        <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 1, background: 'var(--rf-line)', border: '1px solid var(--rf-line)', marginBottom: 64 }}>
-          {[
-            { n: 240, s: '+', l: 'Atletas no time' },
-            { n: 142, s: '', l: 'Medalhas em 2025' },
-            { n: 38, s: '', l: 'Provas concluídas' },
-            { n: 4, s: '.9', l: 'Avaliação média' }
-          ].map((s, i) => (
-            <div key={i} style={{ background: '#050505', padding: '36px 28px' }}>
-              <div className="t-display" style={{ fontSize: 'clamp(44px, 4.4vw, 64px)', color: '#fff', lineHeight: 1 }}>
-                <Counter to={s.n} suffix={s.s} />
-              </div>
-              <div className="t-mono" style={{ marginTop: 8 }}>{s.l}</div>
-            </div>
-          ))}
-        </div>
+
 
         <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 24 }}>
           {TESTIMONIES.map((t, i) => (
