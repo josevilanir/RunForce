@@ -30,7 +30,7 @@ export default function Footer({ accent = '#E30613' }: FooterProps) {
               Assessoria de corrida fundada em 2026. CREF 012345-G/RN. Natal — Brasil.
             </div>
           </div>
-          <FootCol title="NAVEGAÇÃO" links={['Sobre', 'Pilares', 'Benefícios', 'Planos', 'Galeria']} />
+          <FootCol title="NAVEGAÇÃO" links={['Sobre', 'Pilares', 'Benefícios', 'Planos', 'Contato']} />
           <FootCol title="LEGAL" links={['Termos', 'Privacidade', 'Política de cancelamento']} />
           <FootCol title="REDES" links={['Instagram', 'WhatsApp', 'Strava', 'YouTube']} />
         </div>

@@ -52,17 +52,45 @@ export default function Pillars({ accent = '#E30613' }: PillarsProps) {
           </div>
 
           <div className="reveal" style={{ position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minHeight: 480 }}>
-            <div className="ph" style={{ flex: 1, minHeight: 320 }}>
+            <div className="ph" style={{ flex: 1, minHeight: 320, background: '#0d0d0d', border: '1px solid var(--rf-line)' }}>
               <div className="ph-corner tl" />
               <div className="ph-corner br" />
+              
+              {/* Telemetry Graphic Pattern */}
+              <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.12, pointerEvents: 'none' }} xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+                    <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(255, 255, 255, 0.2)" strokeWidth="1"/>
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+                <line x1="0" y1="100%" x2="100%" y2="0" stroke={accent} strokeWidth="1.5" strokeDasharray="4 8" />
+              </svg>
+
+              {/* Mega Number Watermark */}
+              <div style={{
+                position: 'absolute',
+                right: -10,
+                bottom: -30,
+                fontSize: 'clamp(180px, 22vw, 320px)',
+                fontWeight: 900,
+                fontFamily: 'var(--rf-font-title)',
+                color: 'rgba(255,255,255,0.035)',
+                pointerEvents: 'none',
+                lineHeight: 0.8,
+                userSelect: 'none'
+              }}>
+                {PILLARS[active].num}
+              </div>
+
               <div style={{ position: 'absolute', top: 24, right: 24, fontFamily: 'var(--rf-font-mono)', fontSize: 10, letterSpacing: '.3em', color: accent }}>
                 P/{PILLARS[active].num}
               </div>
-              <div style={{ position: 'absolute', bottom: 32, left: 32, right: 32 }}>
+              <div style={{ position: 'absolute', bottom: 32, left: 32, right: 32, zIndex: 2 }}>
                 <div className="t-display" style={{ fontSize: 'clamp(40px, 6vw, 72px)', color: '#fff', textShadow: '0 4px 24px rgba(0,0,0,.6)' }}>{PILLARS[active].name}</div>
                 <div style={{ marginTop: 10, fontSize: 16, color: '#ddd', maxWidth: 460 }}>{PILLARS[active].copy}</div>
               </div>
-              <div className="ph-tag" style={{ position: 'absolute', top: 24, left: 24 }}>FOTO • {PILLARS[active].name.toUpperCase()}</div>
+              <div className="ph-tag" style={{ position: 'absolute', top: 24, left: 24 }}>PILAR • {PILLARS[active].name.toUpperCase()}</div>
             </div>
           </div>
         </div>

@@ -10,7 +10,7 @@ import Benefits from "@/components/sections/Benefits";
 import Plans from "@/components/sections/Plans";
 import SocialProof from "@/components/sections/SocialProof";
 import Contact from "@/components/sections/Contact";
-import Gallery from "@/components/sections/Gallery";
+// import Gallery from "@/components/sections/Gallery";
 
 
 export default function LandingPage() {
@@ -48,7 +48,7 @@ export default function LandingPage() {
       
       <SocialProof accent={accent} />
       
-      <Gallery accent={accent} />
+      {/* <Gallery accent={accent} /> */}
       
       <Contact accent={accent} />
       
