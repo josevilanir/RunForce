@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 
-const WA_NUMBER = "5500000000000";
+const WA_NUMBER = process.env.NEXT_PUBLIC_WA_NUMBER || "5584987046296";
 const WA_MESSAGE = encodeURIComponent("Olá! Quero saber mais sobre a RunForce Team.");
 
 export default function WhatsAppFloat() {

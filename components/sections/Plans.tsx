@@ -104,7 +104,14 @@ export default function Plans({ accent = '#E30613' }: PlansProps) {
                   ))}
                 </ul>
 
-                <a href="#contato" className="btn" style={{
+                <a href="#contato"
+                   onClick={() => {
+                     if (typeof window !== 'undefined') {
+                       const event = new CustomEvent('select-plan', { detail: p.name });
+                       window.dispatchEvent(event);
+                     }
+                   }}
+                   className="btn" style={{
                   width: '100%', justifyContent: 'center',
                   background: isActive ? accent : 'transparent',
                   color: '#fff',

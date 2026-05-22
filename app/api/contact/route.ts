@@ -4,7 +4,10 @@ import { z } from "zod";
 const contactSchema = z.object({
   name: z.string().min(2, "Nome inválido").max(100),
   email: z.string().email("E-mail inválido"),
-  message: z.string().min(5, "Mensagem muito curta").max(2000),
+  phone: z.string().min(8, "Telefone inválido").max(20).optional(),
+  lvl: z.string().max(50).optional(),
+  plan: z.string().max(50).optional(),
+  message: z.string().min(5, "Mensagem muito curta").max(2000).optional(),
 });
 
 export async function POST(req: NextRequest) {
@@ -21,14 +24,18 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Dados inválidos" }, { status: 422 });
   }
 
-  const { name, email, message } = parsed.data;
+  const { name, email, phone, lvl, plan, message } = parsed.data;
 
-  // TODO: integrate with an email provider (e.g. Resend, SendGrid)
   // For now, log sanitized data server-side only
-  console.log("[contact] New submission", { name, email: email.substring(0, 5) + "***" });
+  console.log("[contact] New submission", { 
+    name, 
+    email: email.substring(0, 5) + "***",
+    phone: phone ? phone.substring(0, 5) + "***" : undefined,
+    lvl,
+    plan
+  });
 
-  // Placeholder — wire up email delivery here
-  void name;
+  // Placeholder — wire up future email/notification delivery here
   void message;
 
   return NextResponse.json({ success: true }, { status: 200 });
