@@ -67,8 +67,6 @@ export default function Hero({ headline = 'main', accent = '#E30613' }: HeroProp
 
           {/* RIGHT — mega number on stripe */}
           <div className="hero-v3-right">
-            {/* Vertical text along edge */}
-            <div className="hero-vert">RF/0001 — RUN HARD. RUN SMART. RUN TOGETHER.</div>
           </div>
         </div>
       </div>
