@@ -376,3 +376,22 @@ footer {
   }
 
 }
+
+/* ===== TESTIMONIAL MARQUEE SLIDER ===== */
+@keyframes x-slider {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-x-slider {
+  animation: x-slider 50s linear infinite;
+}
+
+.animate-x-slider:hover {
+  animation-play-state: paused;
+}
+
