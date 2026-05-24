@@ -126,6 +126,7 @@ export default function Hero() {
                   className="hv2-hl-line"
                   style={{
                     color: li === slide.accentLine ? 'var(--rf-red)' : '#fff',
+                    textShadow: li === slide.accentLine ? '3px 3px 8px rgba(0,0,0,0.9), -1px -1px 0 rgba(0,0,0,0.5)' : 'none',
                     animationDelay: `${li * 0.12}s`,
                   }}
                 >

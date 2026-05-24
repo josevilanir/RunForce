@@ -251,6 +251,12 @@ export default function Header({ accent = '#E30613' }: HeaderProps) {
         @media (max-width: 1100px) {
           .hdr-burger { display: flex; }
         }
+
+        /* ---- Very narrow screens: hide TEAM tag to avoid overlap ---- */
+        @media (max-width: 380px) {
+          .logo .tag { display: none !important; }
+          .logo .mark { font-size: 17px !important; }
+        }
       `}</style>
     </>
   );

@@ -369,6 +369,11 @@ footer {
     gap: 16px;
   }
 
+  /* Reduce header inner padding on mobile */
+  .hdr-inner {
+    padding: 0 20px;
+  }
+
   /* About section: stack image + content vertically */
   .sobre-grid {
     grid-template-columns: 1fr !important;
@@ -868,7 +873,7 @@ footer {
 /* ── Section ── */
 .hero-v2 {
   position: relative;
-  min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
   overflow: hidden;
   background: #050505;
@@ -982,6 +987,8 @@ footer {
   border: none;
   cursor: pointer;
   padding: 6px 4px;
+  min-height: 44px;
+  min-width: 44px;
 }
 
 .hv2-dot-num {
@@ -1052,7 +1059,7 @@ footer {
   position: relative;
   z-index: 10;
   width: 100%;
-  padding-bottom: 70px;
+  padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px));
 }
 
 .hv2-content {
@@ -1085,11 +1092,11 @@ footer {
   display: flex;
   flex-direction: column;
   font-family: var(--rf-font-title);
-  font-size: clamp(32px, 4.5vw, 64px);
+  font-size: clamp(30px, 9.5vw, 64px);
   font-weight: 700;
   text-transform: uppercase;
   line-height: 1.05;
-  letter-spacing: -.01em;
+  letter-spacing: -.03em;
   max-width: 100%;
   margin: 0 0 12px;
 }
@@ -1101,6 +1108,7 @@ footer {
 
 .hv2-hl-line {
   display: block;
+  white-space: nowrap;
   animation: lineRise .45s cubic-bezier(.23, 1, .32, 1) both;
 }
 
@@ -1224,7 +1232,7 @@ footer {
 
 @media (max-width: 860px) {
   .hv2-wordmark {
-    font-size: clamp(80px, 18vw, 160px);
+    font-size: clamp(90px, 22vw, 200px);
   }
 
   .hv2-arrow {
@@ -1276,7 +1284,46 @@ footer {
   .hv2-ctas { flex-direction: column; }
   .hv2-btn { width: 100%; }
   .hv2-sub { font-size: 15px; }
-  .hv2-content { padding-left: 20px; padding-right: 20px; }
+  .hv2-content { padding-left: 15px; padding-right: 15px; }
+  /* Hide side arrows on small screens — navigation via dots (top tabs) */
+  .hv2-arrow { display: none; }
+  
+  .hv2-wordmark {
+    font-size: clamp(85px, 25vw, 150px);
+  }
+
+  /* Botão em mobile para não sumir no fundo vermelho */
+  .hv2-btn-primary {
+    background: #ffffff;
+    color: #000000;
+  }
+  .hv2-btn-primary:hover {
+    box-shadow: 0 8px 24px rgba(255, 255, 255, .3);
+  }
+  
+  .hv2-bg-red {
+    width: 75%;
+    right: -15%;
+    transform: skewX(-8deg);
+  }
+}
+
+/* ── Very narrow screens (iPhone SE, 320px) ── */
+@media (max-width: 380px) {
+  /* Prevent logo tag from overlapping burger button */
+  .logo .tag { display: none; }
+
+  /* Reduce header inner padding further */
+  .hdr-inner { padding: 0 16px; }
+
+  /* Scale down wordmark floor to avoid overflow */
+  .hv2-wordmark { font-size: clamp(64px, 18vw, 120px); }
+
+  /* Tighten headline minimum for 320px */
+  .hv2-headline { font-size: clamp(28px, 8vw, 64px); }
+
+  /* Dots fit tighter on narrow screens */
+  .hv2-dots { gap: 8px; top: 96px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1287,5 +1334,7 @@ footer {
     transform: translate(-50%, -50%);
   }
   .hv2-hl-line { animation: none; }
+  /* Reduce GPU-heavy blur on arrows for low-motion preference */
+  .hv2-arrow { backdrop-filter: none; -webkit-backdrop-filter: none; }
 }
 
