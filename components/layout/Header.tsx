@@ -4,11 +4,29 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 const RFLogo = ({ small }: { small?: boolean } = {}) => (
-  <div className="logo">
-    <div className="mark" style={{ fontSize: small ? 20 : 24 }}>
-      RUN<span className="red">FORCE</span>
+  <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+    <svg width={small ? "24" : "32"} height={small ? "24" : "32"} viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
+      <rect x="1" y="1" width="20" height="20" fill="none" stroke="#E30613" strokeWidth="2" />
+      <rect x="5" y="5" width="10" height="2" fill="#E30613" />
+      <rect x="5" y="10" width="7" height="2" fill="#E30613" />
+      <rect x="5" y="15" width="10" height="2" fill="#E30613" />
+    </svg>
+    <div className="mark" style={{ fontSize: small ? 18 : 22, fontWeight: 900, fontFamily: 'var(--rf-font-title)', textTransform: 'uppercase', letterSpacing: '-0.02em', display: 'flex', alignItems: 'center', gap: '4px' }}>
+      <span style={{ color: '#fff' }}>EMICARLO</span>
+      <span style={{ color: '#E30613' }}>SOUZA</span>
     </div>
-    <div className="tag">TEAM</div>
+    <div className="tag" style={{
+      fontFamily: 'var(--rf-font-mono)',
+      fontSize: '9px',
+      letterSpacing: '0.2em',
+      padding: '2px 6px',
+      border: '1px solid rgba(255, 255, 255, 0.2)',
+      color: '#fff',
+      marginLeft: '4px',
+      borderRadius: '2px',
+      textTransform: 'uppercase',
+      fontWeight: 500
+    }}>TEAM</div>
   </div>
 );
 
@@ -45,14 +63,11 @@ export default function Header({ accent = '#E30613' }: HeaderProps) {
 
           <nav className="nav">
             {NAV_LINKS.map(({ href, label }) => (
-              <a key={href} href={href}>{label}</a>
+              <a key={href} href={href}>{label.toUpperCase()}</a>
             ))}
           </nav>
 
           <div className="hdr-actions">
-            <a href="#contato" className="cta hdr-cta" style={{ background: accent }}>
-              Quero entrar
-            </a>
             <button
               className="hdr-burger"
               onClick={() => setOpen(o => !o)}
@@ -86,7 +101,7 @@ export default function Header({ accent = '#E30613' }: HeaderProps) {
               <span className="mob-link-num" style={{ color: accent }}>
                 {String(i + 1).padStart(2, '0')}
               </span>
-              {label}
+              {label.toUpperCase()}
             </a>
           ))}
 
@@ -105,6 +120,10 @@ export default function Header({ accent = '#E30613' }: HeaderProps) {
       </div>
 
       <style jsx>{`
+        @media (min-width: 1101px) {
+          .nav { margin-left: auto !important; }
+        }
+
         /* ---- Actions wrapper ---- */
         .hdr-actions {
           display: flex;
@@ -229,9 +248,8 @@ export default function Header({ accent = '#E30613' }: HeaderProps) {
         }
 
         /* ---- Responsive visibility ---- */
-        @media (max-width: 768px) {
+        @media (max-width: 1100px) {
           .hdr-burger { display: flex; }
-          .hdr-cta    { display: none; }
         }
       `}</style>
     </>

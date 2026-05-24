@@ -36,7 +36,7 @@ export default function LandingPage() {
     <main className="min-h-screen">
       <Header accent={accent} />
       
-      <Hero headline="main" accent={accent} />
+      <Hero />
       
       <About accent={accent} />
       
