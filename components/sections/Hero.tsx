@@ -144,11 +144,7 @@ export default function Hero() {
       {/* ── CONTENT ── */}
       <div className="hv2-content-wrap">
         <div className="hv2-content">
-          <div className="hv2-eyebrow" aria-hidden="true">
-            <span className="hv2-eyebrow-line" />
-            ASSESSORIA DE CORRIDA / EST. 2021
-          </div>
-
+          
           <h1 key={idx} className="hv2-headline">
             {slide.headline.map((line, li) => (
               <span key={li} className="hv2-hl-clip">
