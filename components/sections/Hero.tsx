@@ -36,7 +36,6 @@ const SLIDES: SlideData[] = [
 
 const DOT_NUMS = ['01', '02', '03'] as const;
 const DOT_LABELS = ['evoluir', 'disciplina', 'time'] as const;
-const RING_C = 301.59; // 2π × r(48)
 
 // top%, width%, delay s, duration s
 const BLACK_LINES: [number, number, number, number][] = [
@@ -70,7 +69,6 @@ export default function Hero() {
   const stop = () => setAutoPlay(false);
 
   const slide = SLIDES[idx];
-  const ringDash = ((idx + 1) / SLIDES.length) * RING_C;
 
   return (
     <section className="hero-v2" aria-label="Hero Emicarlo Souza Team">
@@ -116,30 +114,6 @@ export default function Hero() {
         <div key={idx} className="hv2-wordmark">{slide.word}</div>
       </div>
 
-      {/* ── BADGE ── */}
-      <div className="hv2-badge-wrap">
-        <div className="hv2-badge">
-          <svg className="hv2-badge-svg" viewBox="0 0 100 100" width="140" height="140" aria-hidden="true">
-            <circle cx="50" cy="50" r="49" fill="rgba(5,5,5,.95)" stroke="#E30613" strokeWidth="1" />
-            <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,.15)" strokeWidth="1.5" />
-            <circle
-              cx="50" cy="50" r="48"
-              fill="none"
-              stroke="#E30613"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeDasharray={`${ringDash} ${RING_C}`}
-              transform="rotate(-90 50 50)"
-              style={{ transition: 'stroke-dasharray .6s ease' }}
-            />
-          </svg>
-          <div className="hv2-badge-inner">
-            <span className="hv2-badge-brand">EMICARLO SOUZA</span>
-            <span className="hv2-badge-num">{String(idx + 1).padStart(2, '0')}/03</span>
-            <span className="hv2-badge-lbl">{DOT_LABELS[idx].toUpperCase()}</span>
-          </div>
-        </div>
-      </div>
 
       {/* ── CONTENT ── */}
       <div className="hv2-content-wrap">
