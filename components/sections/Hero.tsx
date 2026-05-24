@@ -62,7 +62,7 @@ export default function Hero() {
 
   useEffect(() => {
     if (!autoPlay) return;
-    const t = setInterval(next, 6500);
+    const t = setInterval(next, 2500);
     return () => clearInterval(t);
   }, [autoPlay, next]);
 
@@ -178,16 +178,6 @@ export default function Hero() {
         </svg>
       </div>
 
-      {/* ── MARKER BAR ── */}
-      <div className="hv2-marker">
-        <span>EMICARLO SOUZA TEAM</span>
-        <span className="hv2-bullet" aria-hidden="true" />
-        <span>SÃO PAULO — BRASIL</span>
-        <span className="hv2-bullet" aria-hidden="true" />
-        <span>EST. 2021</span>
-        <span className="hv2-bullet" aria-hidden="true" />
-        <span>VOL. 2026</span>
-      </div>
 
     </section>
   );

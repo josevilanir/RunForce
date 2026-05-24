@@ -1207,39 +1207,13 @@ footer {
 /* ── Decorative curve ── */
 .hv2-curve {
   position: absolute;
-  bottom: 36px;
+  bottom: 0;
   left: 0; right: 0;
   z-index: 5;
   pointer-events: none;
 }
 
-/* ── Marker bar ── */
-.hv2-marker {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 12px 40px;
-  font-family: var(--rf-font-mono);
-  font-size: 10px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: var(--rf-text-dim);
-  border-top: 1px solid rgba(255, 255, 255, .08);
-  background: #050505;
-  flex-wrap: wrap;
-}
 
-.hv2-bullet {
-  display: inline-block;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--rf-gray);
-  flex-shrink: 0;
-}
 
 /* ── Responsive ── */
 @media (max-width: 1100px) {
@@ -1295,11 +1269,7 @@ footer {
     bottom: 64px;
   }
 
-  .hv2-marker {
-    gap: 10px;
-    padding: 10px 20px;
-    font-size: 9px;
-  }
+
 }
 
 @media (max-width: 480px) {
