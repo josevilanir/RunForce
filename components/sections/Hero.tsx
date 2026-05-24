@@ -134,9 +134,6 @@ export default function Hero() {
               </span>
             ))}
           </h1>
-
-          <p key={`sub-${idx}`} className="hv2-sub">{slide.sub}</p>
-
           <div className="hv2-ctas">
             <a href="#contato" className="hv2-btn hv2-btn-primary">
               Quero entrar para o time
