@@ -2,15 +2,19 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import EmicarloIcon from '../assets/Emicarlo_Souza_Png.png';
 
 const RFLogo = ({ small }: { small?: boolean } = {}) => (
-  <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-    <svg width={small ? "24" : "32"} height={small ? "24" : "32"} viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
-      <rect x="1" y="1" width="20" height="20" fill="none" stroke="#E30613" strokeWidth="2" />
-      <rect x="5" y="5" width="10" height="2" fill="#E30613" />
-      <rect x="5" y="10" width="7" height="2" fill="#E30613" />
-      <rect x="5" y="15" width="10" height="2" fill="#E30613" />
-    </svg>
+  <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+    <div style={{ flexShrink: 0, width: small ? 48 : 84, height: small ? 48 : 84, position: 'relative' }}>
+      <Image
+        src={EmicarloIcon}
+        alt="Emicarlo Souza Icon"
+        fill
+        style={{ objectFit: 'contain' }}
+      />
+    </div>
     <div className="mark" style={{ fontSize: small ? 18 : 22, fontWeight: 900, fontFamily: 'var(--rf-font-title)', textTransform: 'uppercase', letterSpacing: '-0.02em', display: 'flex', alignItems: 'center', gap: '4px' }}>
       <span style={{ color: '#fff' }}>EMICARLO</span>
       <span style={{ color: '#E30613' }}>SOUZA</span>

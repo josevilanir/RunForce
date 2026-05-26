@@ -13,7 +13,7 @@ interface SlideData {
 const SLIDES: SlideData[] = [
   {
     id: 'evoluir',
-    word: 'CORRER',
+    word: 'CORRIDA',
     headline: ['NÃO É SÓ CORRER.', 'É EVOLUIR', 'TODOS OS DIAS.'],
     accentLine: 1,
     sub: 'Treinos inteligentes, estratégia e um time para te impulsionar a ir além.',
