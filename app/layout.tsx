@@ -23,20 +23,22 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RunForce Team — Assessoria de Corrida",
-  description:
-    "Treinos inteligentes, estratégia e um time para te impulsionar a ir além. Não é só correr. É evoluir todos os dias.",
-  keywords: ["assessoria de corrida", "corrida", "RunForce", "treino", "performance", "equipe"],
-  authors: [{ name: "RunForce Team" }],
+  title: "Emicarlo Souza Team — Assessoria de Corrida",
+  description: "Da primeira passada ao pódio: treine com método, disciplina e um time que corre por você.",
+  keywords: ["assessoria de corrida", "corrida", "Emicarlo Souza Team", "treino", "performance", "equipe"],
+  authors: [{ name: "Emicarlo Souza Team" }],
   openGraph: {
-    title: "RunForce Team — Assessoria de Corrida",
-    description: "Não é só correr. É evoluir todos os dias.",
-    type: "website",
+    title: "Emicarlo Souza Team — Assessoria de Corrida",
+    description: "Da primeira passada ao pódio: treine com método, disciplina e um time que corre por você.",
+    url: "https://emicarlosouzateam.vercel.app", // Replace with actual URL later if needed
+    siteName: "Emicarlo Souza Team",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
     locale: "pt_BR",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "RunForce Team",
+    title: "Emicarlo Souza Team",
     description: "Não é só correr. É evoluir todos os dias.",
   },
 };

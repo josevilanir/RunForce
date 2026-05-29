@@ -16,7 +16,7 @@ export default function About({ accent = '#E30613' }: AboutProps) {
             <h2 className="sec-title">Mais que corrida.<br /><span style={{ color: accent }}>É transformação.</span></h2>
           </div>
           <div className="reveal" style={{ maxWidth: 460, color: '#bdbdbd', fontSize: 18, lineHeight: 1.55 }}>
-            A RunForce Team é uma assessoria de corrida que transforma vidas através de <strong style={{ color: '#fff' }}>disciplina, estratégia e um time</strong> que te impulsiona a ir além. Da primeira passada à medalha, você não está sozinho.
+            A Emicarlo Souza Team é uma assessoria de corrida que transforma vidas através de <strong style={{ color: '#fff' }}>disciplina, estratégia e um time</strong> que te impulsiona a ir além. Da primeira passada à medalha, você não está sozinho.
           </div>
         </div>
 
@@ -35,7 +35,7 @@ export default function About({ accent = '#E30613' }: AboutProps) {
               <rect width="100%" height="100%" fill="url(#dotGrid)" />
             </svg>
 
-            <div className="t-mono" style={{ color: accent, fontSize: 10, letterSpacing: '.3em', marginBottom: 16 }}>MANIFESTO RUNFORCE</div>
+            <div className="t-mono" style={{ color: accent, fontSize: 10, letterSpacing: '.3em', marginBottom: 16 }}>MANIFESTO EMICARLO SOUZA TEAM</div>
             <h3 className="t-display" style={{ fontSize: 'clamp(24px, 3.5vw, 44px)', lineHeight: 1.1, color: '#fff' }}>
               MÉTODO • EVOLUÇÃO<br />
               <span style={{ color: accent }}>& PERFORMANCE</span>

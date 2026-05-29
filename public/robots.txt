@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://runforceteam.com.br/sitemap.xml
+Sitemap: https://emicarlosouzateam.vercel.app/sitemap.xml

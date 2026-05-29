@@ -125,7 +125,7 @@ export default function SocialProof({ accent = '#E30613' }: SocialProofProps) {
                   border: '1px solid var(--rf-line)'
                 }}
               >
-                {/* Red corner borders characteristic of RunForce design */}
+                {/* Red corner borders characteristic of Emicarlo Souza Team design */}
                 <div className="corner tl" />
                 <div className="corner br" />
 

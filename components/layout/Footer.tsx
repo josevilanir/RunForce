@@ -35,7 +35,7 @@ export default function Footer({ accent = '#E30613' }: FooterProps) {
           <FootCol title="REDES" links={['Instagram', 'WhatsApp', 'Strava', 'YouTube']} />
         </div>
         <div style={{ marginTop: 64, paddingTop: 24, borderTop: '1px solid var(--rf-line)', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16, fontFamily: 'var(--rf-font-mono)', fontSize: 10, color: 'var(--rf-text-dim)', letterSpacing: '.2em' }}>
-          <span>© 2026 RUNFORCE TEAM</span>
+          <span>© 2026 EMICARLO SOUZA TEAM</span>
           <span>RUN HARD. RUN SMART. RUN TOGETHER.</span>
         </div>
       </div>

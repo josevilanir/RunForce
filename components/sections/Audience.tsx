@@ -8,7 +8,7 @@ const profiles = [
   {
     icon: Users,
     title: "Iniciantes",
-    desc: "Deu o primeiro passo? A RunForce te guia com segurança e método desde o km 0.",
+    desc: "Deu o primeiro passo? A Emicarlo Souza Team te guia com segurança e método desde o km 0.",
   },
   {
     icon: TrendingUp,
@@ -23,7 +23,7 @@ const profiles = [
   {
     icon: Trophy,
     title: "Competições",
-    desc: "Você compete. A RunForce planeja, prepara e acompanha cada prova ao seu lado.",
+    desc: "Você compete. A Emicarlo Souza Team planeja, prepara e acompanha cada prova ao seu lado.",
   },
 ];
 
@@ -38,7 +38,7 @@ export default function Audience() {
           transition={{ duration: 0.6 }}
           className="mb-14"
         >
-          <SectionTitle subtitle="A RunForce é para quem quer mais do que só dar voltas. É para quem corre com propósito.">
+          <SectionTitle subtitle="A Emicarlo Souza Team é para quem quer mais do que só dar voltas. É para quem corre com propósito.">
             Para quem{" "}
             <span className="text-rf-red">é</span>
           </SectionTitle>

@@ -7,7 +7,7 @@ import SectionTitle from "@/components/ui/SectionTitle";
 
 const faqs = [
   {
-    q: "Preciso ter experiência em corrida para entrar na RunForce?",
+    q: "Preciso ter experiência em corrida para entrar na Emicarlo Souza Team?",
     a: "Não! Temos planos específicos para iniciantes. O mais importante é a vontade de começar — cuidamos de todo o resto com segurança e progressão adequada.",
   },
   {

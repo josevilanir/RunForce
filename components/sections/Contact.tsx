@@ -87,7 +87,7 @@ export default function Contact({ accent = '#E30613' }: ContactProps) {
 
       setStatus('success');
 
-      const text = `Olá! Quero entrar para o time RunForce.\n\n` +
+      const text = `Olá! Quero entrar para o time Emicarlo Souza Team.\n\n` +
         `*Nome:* ${name}\n` +
         `*WhatsApp:* ${phone}\n` +
         `*E-mail:* ${email}\n` +
@@ -122,7 +122,7 @@ export default function Contact({ accent = '#E30613' }: ContactProps) {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr)', gap: 48 }} className="contato-grid">
           <div className="reveal">
-            <a href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Olá! Quero saber mais sobre a RunForce Team.")}`}
+            <a href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Olá! Quero saber mais sobre a Emicarlo Souza Team.")}`}
                target="_blank" rel="noopener noreferrer"
                className="card" style={{ padding: 28, display: 'flex', alignItems: 'center', gap: 20, textDecoration: 'none', marginBottom: 16 }}>
               <div className="corner tl" /><div className="corner br" />
