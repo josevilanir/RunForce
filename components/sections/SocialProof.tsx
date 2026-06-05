@@ -2,89 +2,71 @@
 
 import React from 'react';
 
-// Inline SVGs for athletic/sponsors brand logos to prevent loading delays or broken external links
-const StravaLogo = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-auto text-[#FC4C02]" aria-label="Strava">
-    <polygon points="12,1 4,16 9.5,16 12,11.5 14.5,16 20,16" />
-    <polygon points="17.5,12 14.5,18 16,21.5 17.5,18.5 19,21.5 20.5,18" />
-  </svg>
-);
-
-const GarminLogo = () => (
-  <svg viewBox="0 0 100 25" fill="currentColor" className="h-4 w-auto text-white/50 hover:text-white transition-colors" aria-label="Garmin">
-    <text x="0" y="20" fontSize="19" fontWeight="900" letterSpacing="0.08em" fontFamily="var(--rf-font-title), sans-serif">GARMIN</text>
-  </svg>
-);
-
-const NikeLogo = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-auto text-white/50 hover:text-white transition-colors" aria-label="Nike">
-    <path d="M21 5.3c-.3 0-1.2.2-2.7.7C14.7 7.3 10.2 10.5 7 13.9c-2.3 2.5-3.5 4.8-3.5 6.4 0 1 .4 1.6 1.2 1.6.8 0 2.1-.5 3.8-1.5 3.9-2.3 8.3-7 10.8-12.2.8-1.6 1.4-2.8 1.7-3 .1 0-.1 0-.1.1z"/>
-  </svg>
-);
-
-const AdidasLogo = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-auto text-white/50 hover:text-white transition-colors" aria-label="Adidas">
-    <polygon points="6,20 9,20 4,8 1,8" />
-    <polygon points="11,20 14,20 8,5 5,5" />
-    <polygon points="16,20 19,20 12,2 9,2" />
-  </svg>
-);
-
-const AsicsLogo = () => (
-  <svg viewBox="0 0 100 25" fill="currentColor" className="h-4 w-auto text-white/50 hover:text-white transition-colors" aria-label="Asics">
-    <text x="0" y="19" fontSize="18" fontWeight="900" fontStyle="italic" fontFamily="sans-serif">asics</text>
-  </svg>
-);
-
-const CorosLogo = () => (
-  <svg viewBox="0 0 100 25" fill="currentColor" className="h-4 w-auto text-white/50 hover:text-white transition-colors" aria-label="Coros">
-    <text x="0" y="19" fontSize="17" fontWeight="800" letterSpacing="0.12em" fontFamily="var(--rf-font-mono), monospace">COROS</text>
-  </svg>
+const GoogleStars = () => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
+    {[...Array(5)].map((_, i) => (
+      <svg key={i} viewBox="0 0 24 24" fill="#FBBC05" style={{ width: 14, height: 14 }} aria-hidden="true">
+        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+      </svg>
+    ))}
+    <svg viewBox="0 0 24 24" style={{ width: 14, height: 14, marginLeft: 4 }} aria-label="Google">
+      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+    </svg>
+  </div>
 );
 
 const TESTIMONIES = [
   {
-    name: 'Carla M.',
-    tag: 'BAIXOU 12 MIN NA MEIA',
-    profession: 'Servidora Pública / Meio-maratonista',
-    quote: 'Cheguei correndo 6:30/km e em 8 meses fechei minha primeira meia maratona em 1h52. A planilha individualizada e a comunidade me impulsionaram a ir além.',
-    logo: <StravaLogo />
+    name: 'Evilly Tomaz Souza',
+    tag: '5 ESTRELAS',
+    profession: '1 avaliação',
+    quote: 'Profissional incrível, sempre muito disposto, com um olhar atento e muita cautela no cuidado com o paciente. Ele é sinônimo de força, coragem e muita garra, um prazer ter um profissional como vc ao meu lado professor!!!',
   },
   {
-    name: 'Rafael S.',
-    tag: 'PRIMEIRA MARATONA',
-    profession: 'Engenheiro Civil / Maratonista',
-    quote: 'Achei que maratona não era pra mim. A planilha respeita minha rotina exaustiva de trabalho, e o acompanhamento diário dos treinadores me deu a confiança para cruzar a linha de chegada.',
-    logo: <GarminLogo />
+    name: 'Leonardo Fontes',
+    tag: '5 ESTRELAS',
+    profession: '11 avaliações',
+    quote: 'Excelente profissional! Tem uma grande bagagem de ensino e experiência, fruto de sua vida como atleta olímpico',
   },
   {
-    name: 'Joana P.',
-    tag: 'VOLTOU APÓS LESÃO',
-    profession: 'Médica Traumatologista',
-    quote: 'Voltei de uma fascite plantar severa com muito medo. O trabalho de fortalecimento específico e a progressão cuidadosa me permitiram voltar a treinar sem dor.',
-    logo: <AsicsLogo />
+    name: 'Carlos Alberto Mora',
+    tag: '5 ESTRELAS',
+    profession: '9 avaliações',
+    quote: 'Um atleta fora de serie, que tem uma historia de vida maravilhosa e que certamente empolga muitos de nós a procurarmos a excelencia',
   },
   {
-    name: 'Marcos T.',
-    tag: 'SUB 3h NA MARATONA',
-    profession: 'Advogado / Maratonista de Elite',
-    quote: 'A dedicação integral dos treinadores e a estratégia de prova impecável foram fundamentais para que eu conseguisse quebrar a barreira das 3 horas em Porto Alegre.',
-    logo: <NikeLogo />
+    name: 'Jose Vilanir',
+    tag: '5 ESTRELAS',
+    profession: '5 avaliações',
+    quote: 'Profissional sério, comprometido e apaixonado pelo que faz! Entende o objetivo de cada pessoa e traça um caminho real para chegar lá',
   },
   {
-    name: 'Amanda K.',
-    tag: 'ESTILO DE VIDA E SAÚDE',
-    profession: 'Arquiteta',
-    quote: 'Encontrei mais do que uma assessoria de corrida; encontrei uma família. A corrida me trouxe saúde mental, foco e muito mais disposição para encarar o dia a dia.',
-    logo: <AdidasLogo />
+    name: 'Ana Paula Carino',
+    tag: '5 ESTRELAS',
+    profession: '1 avaliação',
+    quote: 'Profissional competente, responsável e proativo.',
   },
   {
-    name: 'Lucas G.',
-    tag: 'ESTREIA EM 10K',
-    profession: 'Designer de Produto',
-    quote: 'Comecei sem conseguir correr 1km consecutivo. Menos de um ano depois, completei meus primeiros 10km oficiais abaixo de 1 hora. O método realmente funciona.',
-    logo: <CorosLogo />
-  }
+    name: 'Deise Janovitz Gomes Dias',
+    tag: '5 ESTRELAS',
+    profession: '7 avaliações',
+    quote: 'Experiência e compromisso com resultados!!',
+  },
+  {
+    name: 'Ana Cláudia Lins de Melo',
+    tag: '5 ESTRELAS',
+    profession: '2 avaliações',
+    quote: 'Esse eu indico de olho fechado!',
+  },
+  {
+    name: 'Lenilson Marques',
+    tag: '5 ESTRELAS',
+    profession: '4 avaliações',
+    quote: 'Excelente, parabéns e muito obrigado! 👏',
+  },
 ];
 
 const duplicatedTestimonies = [...TESTIMONIES, ...TESTIMONIES];
@@ -187,9 +169,9 @@ export default function SocialProof({ accent = '#E30613' }: SocialProofProps) {
                     </div>
                   </div>
 
-                  {/* Brand/Sponsor logo representation */}
+                  {/* Google stars + logo */}
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    {t.logo}
+                    <GoogleStars />
                   </div>
                 </div>
               </div>
